@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishwakarma Parivar Family Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #34495e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .search-container input:focus {
+            border-color: #2a5298;
+            box-shadow: 0 2px 15px rgba(42,82,152,0.2);
+        }
+
+        .root-ancestors {
+            background: var(--card-bg);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .root-ancestors h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .couple {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            background: #fff5f5;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .heart {
+            color: var(--accent-color);
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .branches-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .branch-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #2a5298;
+        }
+
+        .branch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .branch-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .children-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .child-item {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .child-name {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .grand-children-list {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+            border-left: 2px dashed #cbd5e0;
+        }
+
+        .grand-child-item {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 10px;
+        }
+
+        .grand-child-item::before {
+            content: "•";
+            color: #a0aec0;
+            position: absolute;
+            left: 0;
+        }
+
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .branches-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vishwakarma Parivar</h1>
+        <p>Hamara Parivar, Hamari Shaan — Family Tree Website</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Parivar ke sadasya ka naam dhoondein...">
+    </div>
+
+    <div class="root-ancestors" id="rootSection">
+        <h2>Root Ancestors</h2>
+        <div class="couple">
+            Gundi Lal Vishwakarma <span class="heart">❤️</span> Ramlali Vishwakarma
+        </div>
+    </div>
+
+    <div class="branches-container" id="branchesContainer">
+        <!-- Branch 1 -->
+        <div class="branch-card">
+            <div class="branch-title">1. Suresh Kumar & Ramsakhi Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px;">Suresh Kumar Vishwakarma <span class="heart">❤️</span> Ramsakhi Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item">
+                    <span class="child-name">Rani Vishwakarma ❤️ Narottam Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Aarosh Vishwakarma</li>
+                        <li class="grand-child-item">Arnav Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item">
+                    <span class="child-name">Rakesh Vishwakarma ❤️ Shobha Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Aarav (Ved) Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item">
+                    <span class="child-name">Sanjeev Vishwakarma ❤️ Renu Jha</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Aadvik (Aadi) Vishwakarma</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Branch 2 -->
+        <div class="branch-card" style="border-left-color: #27ae60;">
+            <div class="branch-title" style="color: #27ae60;">2. Pushpa & Santosh Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #f0fff4;">Pushpa Vishwakarma <span class="heart">❤️</span> Santosh Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item">
+                    <span class="child-name">Akhlesh Vishwakarma ❤️ Anita Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Anshika Vishwakarma</li>
+                        <li class="grand-child-item">Daisy Vishwakarma</li>
+                        <li class="grand-child-item">Vedansh Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item">
+                    <span class="child-name">Manish Vishwakarma ❤️ Kirti Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Abhir Vishwakarma</li>
+                        <li class="grand-child-item">Manveer Vishwakarma</li>
+                        <li class="grand-child-item">Poorvi Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item">
+                    <span class="child-name">Archana Vishwakarma ❤️ Shivkumar Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Priyanshi Vishwakarma</li>
+                        <li class="grand-child-item">Aarohi Phishwakarma</li>
+                        <li class="grand-child-item">Abhinav Vishwakarma</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Branch 3 -->
+        <div class="branch-card" style="border-left-color: #8e44ad;">
+            <div class="branch-title" style="color: #8e44ad;">3. Ramesh & Urmila Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #faf5ff;">Ramesh Vishwakarma <span class="heart">❤️</span> Urmila Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item">
+                    <span class="child-name">Shilpi Vishwakarma ❤️ Narendra Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Hriday Vishwakarma</li>
+                        <li class="grand-child-item">Mahi Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item"><span class="child-name">Dipak Vishwakarma</span></li>
+                <li class="child-item"><span class="child-name">Pintu Vishwakarma</span></li>
+                <li class="child-item"><span class="child-name">Manju Vishwakarma</span></li>
+                <li class="child-item"><span class="child-name">Vishal Vishwakarma</span></li>
+            </ul>
+        </div>
+
+        <!-- Branch 4 -->
+        <div class="branch-card" style="border-left-color: #f39c12;">
+            <div class="branch-title" style="color: #f39c12;">4. Rajaram & Anita Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #fffaf0;">Rajaram Vishwakarma <span class="heart">❤️</span> Anita Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item">
+                    <span class="child-name">Shubham Vishwakarma ❤️ Lalita Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Aadhya Vishwakarma</li>
+                        <li class="grand-child-item">Anvit Vishwakarma</li>
+                    </ul>
+                </li>
+                <li class="child-item"><span class="child-name">Shiva Vishwakarma</span></li>
+                <li class="child-item"><span class="child-name">Raj Vishwakarma</span></li>
+            </ul>
+        </div>
+
+        <!-- Branch 5 -->
+        <div class="branch-card" style="border-left-color: #16a085;">
+            <div class="branch-title" style="color: #16a085;">5. Kailash & Rajkumari Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #e6fffa;">Kailash Vishwakarma <span class="heart">❤️</span> Rajkumari Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item">
+                    <span class="child-name">Vikash Vishwakarma ❤️ Riya Vishwakarma</span>
+                    <ul class="grand-children-list">
+                        <li class="grand-child-item">Nisha Vishwakarma</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Branch 6 -->
+        <div class="branch-card" style="border-left-color: #d35400;">
+            <div class="branch-title" style="color: #d35400;">6. Mamta & Kapil Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #fff5f0;">Mamta Vishwakarma <span class="heart">❤️</span> Kapil Sharma</div>
+            <ul class="children-list">
+                <li class="child-item"><span class="child-name">Khushi Sharma</span></li>
+            </ul>
+        </div>
+
+        <!-- Branch 7 -->
+        <div class="branch-card" style="border-left-color: #7f8c8d;">
+            <div class="branch-title" style="color: #7f8c8d;">7. Prabha & Narayan Branch</div>
+            <div class="couple" style="font-size:1rem; margin-bottom:15px; background: #f8f9fa;">Prabha Vishwakarma <span class="heart">❤️</span> Narayan Vishwakarma</div>
+            <ul class="children-list">
+                <li class="child-item"><span class="child-name">Aman Vishwakarma</span></li>
+                <li class="child-item"><span class="child-name">Chotu Vishwakarma</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Vishwakarma Family Tree | Made with ❤️ for the Family</p>
+    </footer>
+
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        const cards = document.querySelectorAll('.branch-card');
+        const rootSection = document.getElementById('rootSection');
+
+        searchBar.addEventListener('input', (e) => {
+            const searchText = e.target.value.toLowerCase().trim();
+
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchText)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (rootSection.textContent.toLowerCase().includes(searchText)) {
+                rootSection.style.display = 'block';
+            } else if (searchText !== '') {
+                rootSection.style.display = 'none';
+            } else {
+                rootSection.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
